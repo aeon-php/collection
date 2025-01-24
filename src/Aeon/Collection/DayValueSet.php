@@ -55,10 +55,8 @@ final class DayValueSet implements \Countable
     public static function createWith(Day $start, Day $end, $value) : self
     {
         return new self(
-            ...$start->until(
-                $end,
-                Interval::closed()
-            )->map(fn (Day $day) : DayValue => new DayValue($day, $value))
+            /* @phpstan-ignore-next-line  */
+            ...$start->until($end, Interval::closed())->map(fn (Day $day) : DayValue => new DayValue($day, $value))
         );
     }
 
